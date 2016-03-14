@@ -11,6 +11,7 @@ class IyzipayResource
     private $locale;
     private $systemTime;
     private $conversationId;
+    private $jsonResult;
 
     protected static function getHttpHeaders(Request $request, Options $options)
     {
@@ -30,6 +31,17 @@ class IyzipayResource
         $hash = HashGenerator::generateHash($options->getApiKey(), $options->getSecretKey(), $randomHeaderValue, $request);
         return vsprintf("IYZWS %s:%s", array($options->getApiKey(), $hash));
     }
+
+    public function getJsonResult()
+    {
+        return $this->jsonResult;
+    }
+
+    public function setJsonResult($jsonResult)
+    {
+        $this->jsonResult = $jsonResult;
+    }
+
 
     public function getStatus()
     {

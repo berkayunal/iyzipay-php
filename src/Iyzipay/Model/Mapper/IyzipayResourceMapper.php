@@ -13,6 +13,9 @@ class IyzipayResourceMapper
 
     public function mapResource(IyzipayResource $resource, $jsonResult)
     {
+
+        $resource->setJsonResult($jsonResult);
+        
         if (isset($jsonResult->status)) {
             $resource->setStatus($jsonResult->status);
         }
